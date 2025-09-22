@@ -1,7 +1,17 @@
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QApplication, QLabel, QDesktopWidget
+from widgets.gauge_widget import gauge_widget
 import sys
 
+# Background color      : #1E1E1E
+# Panel Background color: #424242
+# Positive color (green): #32CD32
+# Negative color (red)  : #FF0000
+# Main text color       : #FFFFFF
+# Secondary text color  : #A0A0A0
+# Accent 1 (Critical)   : #FFD700
+# Accent 2 (General)    : #64C7FF
+ 
 # inheriting from QMainWindow
 class mainWindow(QMainWindow):
     def __init__(self):
@@ -18,24 +28,20 @@ class mainWindow(QMainWindow):
         self.setGeometry(left, top, width, height)
         self.setWindowTitle("Real-time Telemetry")
 
+        # background
+        self.setStyleSheet("background-color: #000000")
+
         self.initUI()
 
     def initUI(self):
-        self.label = QtWidgets.QLabel(self)
-        self.label.setText("Button not clicked")
-        self.label.move(50,50)
-        self.label.adjustSize()
+        # Making widgets on window
+        self.gauge = gauge_widget(self)
 
-        self.b1 = QtWidgets.QPushButton(self)
-        self.b1.setText("Button")
-        self.b1.clicked.connect(self.clicked)
+        # variables to move widgets
+        x = (self.width() // 2) - self.gauge.width() // 2
+        y = (self.height() // 2) - self.gauge.height() // 2
+        self.gauge.move(x,y)
 
-    def clicked(self):
-        self.label.setText("Clicked Button")
-        self.update()
-
-    def update(self):
-        self.label.adjustSize()
 
 def window():
     app = QApplication(sys.argv)
@@ -47,5 +53,8 @@ def window():
     ## for clean exit when X is clicked
     sys.exit(app.exec_())
 
+def main():
+    window()
 
-window()
+if __name__ == "__main__":
+    main()
