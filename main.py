@@ -5,11 +5,11 @@ import sys
 
 # Background color      : #1E1E1E
 # Panel Background color: #424242
-# Positive color (green): #32CD32
-# Negative color (red)  : #FF0000
+# Positive color (green): #579549
+# Negative color (red)  : #9E4E42
 # Main text color       : #FFFFFF
 # Secondary text color  : #A0A0A0
-# Accent 1 (Critical)   : #FFD700
+# Accent 1 (Critical)   : #BA7432
 # Accent 2 (General)    : #64C7FF
  
 # inheriting from QMainWindow
@@ -35,13 +35,20 @@ class mainWindow(QMainWindow):
 
     def initUI(self):
         # Making widgets on window
-        self.gauge = gauge_widget(self)
+        self.gauge = gauge_widget(self,"Foo Bar", 0, 12000, 9000, 11000)
+        self.gauge2 = gauge_widget(self,"Foo Bar 2", 0, 12000, 9000, 11000)
+        self.gauge3 = gauge_widget(self,"Foo Bar 3", 0, 12000, 9000, 11000)
 
         # variables to move widgets
         x = (self.width() // 2) - self.gauge.width() // 2
         y = (self.height() // 2) - self.gauge.height() // 2
         self.gauge.move(x,y)
 
+        x += 260
+        self.gauge2.move(x,y)
+
+        x -= 520
+        self.gauge3.move(x,y)
 
 def window():
     app = QApplication(sys.argv)
