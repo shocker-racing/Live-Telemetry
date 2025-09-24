@@ -4,7 +4,7 @@ from PyQt5.QtGui import QPainter, QBrush, QColor, QPen, QFont, QPainterPath
 from PyQt5.QtCore import Qt, QPointF, QRectF, pyqtProperty
 
 class gauge_widget(QWidget):
-    def __init__(self, parent = None, title = "", min_gauge_value = 0, max_gauge_value = 100, orange_start = 33, orange_end = 66):
+    def __init__(self, parent = None, title = "", min_gauge_value = 0, max_gauge_value = 100, orange_start = 33, orange_end = 66, unit = ""):
         super().__init__(parent)
         self.setMinimumSize(250,200)
 
@@ -16,6 +16,7 @@ class gauge_widget(QWidget):
         self.max_gauge = max_gauge_value
         self.orange_start = orange_start
         self.orange_end = orange_end
+        self.unit = unit
 
         # colors for this widget
         self.background_color = QColor("#1E1E1E")
@@ -54,7 +55,7 @@ class gauge_widget(QWidget):
         # self.draw_ticks_and_labels(painter)
         # self.draw_needle(painter)
 
-        painter.restore
+        painter.restore()
 
     def draw_title(self, painter):
         painter.save()
@@ -71,7 +72,7 @@ class gauge_widget(QWidget):
 
         painter.setFont(QFont("Arial", 16))
         painter.setPen(QPen(self.label_color))
-        text = f"{self._value}"
+        text = f"{self._value} {self.unit}"
 
         painter.drawText(QRectF(-40, -10, 80, 20), Qt.AlignCenter, text)
 
@@ -191,6 +192,5 @@ class gauge_widget(QWidget):
     
     @value.setter
     def value(self, val):
-        if(0 <= val <= 100):
-            self._value = val
-            self.update()
+        self._value = val
+        self.update()
