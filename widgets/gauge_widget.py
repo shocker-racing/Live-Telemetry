@@ -17,7 +17,7 @@ class gauge_widget(QWidget):
         self.orange_start = orange_start
         self.orange_end = orange_end
         self.unit = unit
-
+        
         # colors for this widget
         self.background_color = QColor("#1E1E1E")
         self.panel_color = QColor("#424242")

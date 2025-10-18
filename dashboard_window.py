@@ -60,10 +60,10 @@ class Dashboard(QMainWindow):
     def simulate(self):
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.change)
-        self.timer.start(500)
+        self.timer.start(1)
 
     def change(self):
-        self.Engine_RPM_gauge.value = random.randint(0,11000)
+        self.Engine_RPM_gauge.value = self.Engine_RPM_gauge.value + 1
         self.oil_pressure_gauge.value = random.randint(0,100)
         self.coolant_flow_gauge.value = random.randint(0,250)
         self.fuel_pressure_gauge.value = random.randint(0,100)
