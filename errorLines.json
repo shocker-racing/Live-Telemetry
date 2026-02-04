@@ -1,0 +1,34 @@
+{
+    "EngineRPM": {
+        "caution_min": 1000,
+        "caution_max": 7500
+    },
+    "EngineOilTemp": {
+        "caution_min": 180,
+        "caution_max": 240
+    },
+    "EngineCoolantTemp": {
+        "caution_min": 190,
+        "caution_max": 210
+    },
+    "lambda": {
+        "caution_min": 0.9,
+        "caution_max": 1.1
+    },
+    "coolantFlow": {
+        "caution_min": 8,
+        "caution_max": 18
+    },
+    "oilPressure": {
+        "caution_min": 20,
+        "caution_max": 70
+    },
+    "fuelPressure": {
+        "caution_min": 35,
+        "caution_max": 55
+    },
+    "acceleration": {
+        "caution_min": -5,
+        "caution_max": 5
+    }
+}
