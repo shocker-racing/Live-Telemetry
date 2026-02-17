@@ -2,14 +2,14 @@ u = udpport("IPV4");
 remoteIP = "127.0.0.1";
 remotePort = 5005;
 
-db = canDatabase('cruisecontrol.dbc');
-msg = canMessage(db, 'CruiseCtrlCmd');
+db = canDatabase('29-bit-OBD2-v4.0.dbc');
+msg = canMessage(db, 'OBD2');
 
 sequenceNumber = 0;
 
 while true
-    msg.Signals.S03_VehicleSpeed = randi([50, 100]);
-    msg.Signals.S01_CruiseOnOff = randi([0, 1]);
+    msg.Signals.S01PID = 13;
+    msg.Signals.S01PID0D_VehicleSpeed = randi([50, 100]);
 
     decoded = msg.Signals;
 
@@ -17,7 +17,7 @@ while true
 
     payload = jsonencode(decoded);
 
-    write(u, uint8(payload), remoteIP, remotePort);
+    write(u, uint8([payload newline]), remoteIP, remotePort);
 
     sequenceNumber = sequenceNumber + 1;
 
