@@ -1,13 +1,13 @@
 {
-    "EngineRPM": {
+    "engineRPM": {
         "caution_min": 1000,
         "caution_max": 7500
     },
-    "EngineOilTemp": {
+    "engineOilTemp": {
         "caution_min": 180,
         "caution_max": 240
     },
-    "EngineCoolantTemp": {
+    "engineCoolantTemp": {
         "caution_min": 190,
         "caution_max": 210
     },
