@@ -1,0 +1,9 @@
+services:
+  database:
+    image: timescale/timescaledb:latest-pg16
+    container_name: live-telemetry
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=wacky
+    restart: always
