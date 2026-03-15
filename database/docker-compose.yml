@@ -6,4 +6,6 @@ services:
       - "5432:5432"
     environment:
       - POSTGRES_PASSWORD=wacky
+    volumes:
+      - ./database-data:/var/lib/postgresql/data
     restart: always
