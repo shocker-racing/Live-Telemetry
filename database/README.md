@@ -1,8 +1,70 @@
 # Getting Started
 
-go to www.docker.com and download docker
+## Downloading necessary stuff
 
-1. run `docker-compose up -d` to start the container
-2. run `docker exec -i live-telemetry psql -U postgres < init-db.sql` to initilize the hypertable
-3. run `pip install psycopg2-binary` to download necessary Library for PostreSQL Python driver
-4. run `python UDP_ingestor.py` to start the Python ingestor
+1. **Install Docker**
+   Go to https://www.docker.com and download Docker.
+
+2. **Install MATLAB Database Toolbox**
+
+   * Open MATLAB
+   * Go to **Get Add-Ons**
+   * Search for **Database Toolbox** and install it
+
+3. **Install Python PostgreSQL library**
+   Run:
+
+   ```bash
+   pip install psycopg2-binary
+   ```
+
+---
+
+## Starting stuff
+
+1. **Start the database container**
+   Run:
+
+   ```bash
+   docker-compose up -d
+   ```
+
+2. **Initialize the database**
+   Run:
+
+   ```bash
+   docker cp init-db.sql live-telemetry:/init-db.sql
+   docker exec -i live-telemetry psql -U postgres -f /init-db.sql
+   ```
+
+3. **Start the Python UDP ingestor**
+   Run:
+
+   ```bash
+   python UDP_ingestor.py
+   ```
+
+---
+
+## Data stuff
+
+1. **Inputting dummy data into the database**
+   Run:
+
+   ```bash
+   docker exec -i live-telemetry psql -U postgres < dummy-data.sql
+   ```
+
+---
+
+## Additional notes
+
+* Make sure Docker is running before starting anything.
+* The database must be running before starting the Python ingestor.
+* The MATLAB UI only loads and displays data from the database.
+
+---
+
+## Convenience scripts
+
+There are also two `.bat` files to run the database and ingestor instead of using only the command line.
