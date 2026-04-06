@@ -11,10 +11,10 @@ Downloading necessary stuff
 
 Starting stuff
 1. Start the database container
-    run 'docker-compose up -d'
+    run ```docker-compose up -d```
 2. Initialize the database
-    run 'docker exec -i live-telemetry psql -U postgres -f /init-db.sql'
+    run ```docker exec -i live-telemetry psql -U postgres -f /init-db.sql```
 3. Start the Python UDP ingestor
-    run 'python UDP_ingestor.py'
+    run ```python UDP_ingestor.py```
 
 There is also two bat files to run the db and ingestor instead of using solely command line
